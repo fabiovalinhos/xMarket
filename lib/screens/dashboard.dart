@@ -38,6 +38,7 @@ class _DashboardState extends State<Dashboard> {
             child: Expanded(
               child: FutureBuilder<List<Product>>(
                 future: _webClient.findAll(),
+                // ignore: missing_return
                 builder: (context, snapshop) {
                   switch (snapshop.connectionState) {
                     case ConnectionState.none:
@@ -48,7 +49,33 @@ class _DashboardState extends State<Dashboard> {
                       break;
                     case ConnectionState.done:
                       final List<Product> products = snapshop.data;
-                      if (products.isNotEmpty) {}
+                      if (products.isNotEmpty) {
+                        return ListView.builder(
+                          itemBuilder: (context, index) {
+                            final Product product = products[index];
+                            return Card(
+                              color: Color(0xFF880e4f),
+                              child: ListTile(
+                                title: Text(
+                                  product.id.toString(),
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                    color: Colors.red[300],
+                                  ),
+                                ),
+                                subtitle: Text(
+                                  product.title,
+                                  style: TextStyle(
+                                    fontSize: 12.0,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                          itemCount: products.length,
+                        );
+                      }
                       break;
                   }
                   ;
