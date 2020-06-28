@@ -51,13 +51,14 @@ class _DashboardState extends State<Dashboard> {
                       final List<Product> products = snapshop.data;
                       if (products.isNotEmpty) {
                         return ListView.builder(
+                          padding: EdgeInsets.all(10.0),
                           itemBuilder: (context, index) {
                             final Product product = products[index];
                             return Card(
                               color: Color(0xFF880e4f),
                               child: ListTile(
                                 title: Text(
-                                  product.id.toString(),
+                                  "Produto " + product.id.toString(),
                                   style: TextStyle(
                                     fontSize: 16.0,
                                     color: Colors.red[300],
