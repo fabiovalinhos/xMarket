@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
+import 'package:xastremarketmobile/components/centered_message.dart';
 import 'package:xastremarketmobile/http/webclients/product_webclient.dart';
 import 'package:xastremarketmobile/models/product.dart';
 
@@ -48,38 +49,44 @@ class _DashboardState extends State<Dashboard> {
                     case ConnectionState.active:
                       break;
                     case ConnectionState.done:
-                      final List<Product> products = snapshop.data;
-                      if (products.isNotEmpty) {
-                        return ListView.builder(
-                          padding: EdgeInsets.all(10.0),
-                          itemBuilder: (context, index) {
-                            final Product product = products[index];
-                            return Card(
-                              color: Color(0xFF880e4f),
-                              child: ListTile(
-                                title: Text(
-                                  "Produto " + product.id.toString(),
-                                  style: TextStyle(
-                                    fontSize: 16.0,
-                                    color: Colors.red[300],
+                      if (snapshop.hasData) {
+                        final List<Product> products = snapshop.data;
+                        if (products.isNotEmpty) {
+                          return ListView.builder(
+                            padding: EdgeInsets.all(10.0),
+                            itemBuilder: (context, index) {
+                              final Product product = products[index];
+                              return Card(
+                                color: Color(0xFF880e4f),
+                                child: ListTile(
+                                  title: Text(
+                                    "Produto " + product.id.toString(),
+                                    style: TextStyle(
+                                      fontSize: 16.0,
+                                      color: Colors.red[300],
+                                    ),
+                                  ),
+                                  subtitle: Text(
+                                    product.title,
+                                    style: TextStyle(
+                                      fontSize: 12.0,
+                                      color: Colors.black,
+                                    ),
                                   ),
                                 ),
-                                subtitle: Text(
-                                  product.title,
-                                  style: TextStyle(
-                                    fontSize: 12.0,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                          itemCount: products.length,
-                        );
+                              );
+                            },
+                            itemCount: products.length,
+                          );
+                        }
                       }
+                      return CenteredMessage(
+                        'Nenhum produto encontrado',
+                        icon: Icons.warning,
+                      );
                       break;
                   }
-                  ;
+                  return CenteredMessage('Unknown error');
                 },
               ),
             ),
