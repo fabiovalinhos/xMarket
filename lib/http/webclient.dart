@@ -8,4 +8,4 @@ final Client client = HttpClientWithInterceptor.build(
   requestTimeout: Duration(seconds: 5),
 );
 
-const String baseUrl = 'https://jsonplaceholder.typicode.com/todos';
+const String baseUrl = 'https://xmarketapi.herokuapp.com/api/items';

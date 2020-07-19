@@ -10,9 +10,9 @@ class XMarketMobile extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primaryColor: Colors.red[900],
+        primaryColor: Colors.red[500],
         accentColor: Colors.red,
-        scaffoldBackgroundColor: Colors.red[900],
+        scaffoldBackgroundColor: Colors.white70,
       ),
       home: Dashboard(),
       debugShowCheckedModeBanner: false,

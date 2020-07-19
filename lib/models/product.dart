@@ -1,24 +1,21 @@
 class Product {
-  int userId;
   int id;
-  String title;
-  bool completed;
+  String produto;
+  String localizacao;
 
-  Product({this.userId, this.id, this.title, this.completed});
+  Product({this.id, this.produto, this.localizacao});
 
   Product.fromJson(Map<String, dynamic> json) {
-    userId = json['userId'];
     id = json['id'];
-    title = json['title'];
-    completed = json['completed'];
+    produto = json['produto'];
+    localizacao = json['localizacao'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['userId'] = this.userId;
     data['id'] = this.id;
-    data['title'] = this.title;
-    data['completed'] = this.completed;
+    data['produto'] = this.produto;
+    data['localizacao'] = this.localizacao;
     return data;
   }
 }

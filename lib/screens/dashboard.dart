@@ -24,7 +24,7 @@ class _DashboardState extends State<Dashboard> {
           Container(
             height: 100.0,
             width: double.infinity,
-            color: Colors.red[800],
+            color: Colors.white12,
             child: Padding(
               padding: EdgeInsets.all(20.0),
               child: Image.asset(
@@ -60,14 +60,14 @@ class _DashboardState extends State<Dashboard> {
                                 color: Color(0xFF880e4f),
                                 child: ListTile(
                                   title: Text(
-                                    "Produto " + product.id.toString(),
+                                    product.produto,
                                     style: TextStyle(
                                       fontSize: 16.0,
                                       color: Colors.red[300],
                                     ),
                                   ),
                                   subtitle: Text(
-                                    product.title,
+                                    product.localizacao,
                                     style: TextStyle(
                                       fontSize: 12.0,
                                       color: Colors.black,
